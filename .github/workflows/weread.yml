@@ -24,6 +24,7 @@ jobs:
       - name: weread sync
         id: weread-sync
         run: |
+          mkdir -p ./var
           python main.py sync_read "${{secrets.WEREAD_COOKIE}}" "${{secrets.NOTION_TOKEN}}" "${{secrets.NOTION_DATABASE_ID}}" --calendar_db_id="${{secrets.NOTION_DATABASE_CALENDAR}}" --wxnotify_key="${{secrets.SCKEY}}"
       - name: Verify Changed files
         uses: tj-actions/verify-changed-files@v20
